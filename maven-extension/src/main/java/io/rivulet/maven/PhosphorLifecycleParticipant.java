@@ -38,7 +38,7 @@ public class PhosphorLifecycleParticipant extends AbstractMavenLifecycleParticip
 
 	static String PATH_TO_RIVULET_CORE_JAR;
 	private static final String PHOSPHOR_VERSION = "0.0.4-SNAPSHOT";
-	private static final String RIVULET_VERSION = "1.0.0";
+	private static final String RIVULET_VERSION = "2.0.0-SNAPSHOT";
 
 	static {
 		PATH_TO_AGENT_BOOTPATH_JAR = "/edu/gmu/swe/phosphor/Phosphor/" + PHOSPHOR_VERSION + "/Phosphor-" + PHOSPHOR_VERSION + ".jar";

@@ -2,11 +2,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>rivulet-maven-test</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0-SNAPSHOT</version>
     <parent>
         <groupId>io.rivulet</groupId>
         <artifactId>rivulet-maven-parent</artifactId>
-        <version>1.0.0</version>
+        <version>2.0.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     <properties>
@@ -31,7 +31,7 @@
             <extension>
                 <groupId>io.rivulet</groupId>
                 <artifactId>rivulet-maven-extension</artifactId>
-                <version>1.0.0</version>
+                <version>2.0.0-SNAPSHOT</version>
             </extension>
         </extensions>
         <plugins>
@@ -451,7 +451,7 @@
         <dependency>
             <groupId>io.rivulet</groupId>
             <artifactId>rivulet-core</artifactId>
-            <version>1.0.0</version>
+            <version>2.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>

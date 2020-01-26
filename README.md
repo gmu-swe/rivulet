@@ -25,8 +25,6 @@ RIVULET builds regularly on [TravisCI](https://travis-ci.com/gmu-swe/rivulet), a
 
 * To play around with it: go into the `integration-test` project and inspect the tests. You will see that when the tests run, they print a "VIOLATION" when a source-sink flow is detected. The tests are then rerun. During reruns, you will see "CRITICAL VIOLATION" when a source-sink flow is verified. If you would like to write and run your own test, the easiest way to do so is to add your test method to an existing test and continue to use the `mvn test` command, perhaps running only the test that you changed, e.g. `mvn -Dtest=DeepSourceTest`. The default sources and sinks for integration tests can be found in `maven-extension/src/main/resources/config-files/integration-test/`; additional sources/sinks can be specified as annotations on a test class or test method.
 
-* `taintThrough` defines a set of instance methods that have the behavior of passing-on the tainted tag of `this`: if `this` is tainted and a `taintThrough` method is called, the return value (and any array parameters passed to) that method receive a copy of that same taint tag (useful for getters, etc). There only necessary is you are using sources that return Objects. [Should we delete this bullet at this point?]
-
 ## Using RIVULET with Existing Test Suites
 Once RIVULET is installed, it is relatively straightforward to use it to find vulnerabilities in an existing application, provided that that application has an automated test suite that is executed with `mvn test` or `mvn verify`.
 

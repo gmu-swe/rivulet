@@ -4,7 +4,7 @@ RIVULET is a system for detecting code injection vulnerabilities in Java web app
 ## Installation and Running Benchmarks
 RIVULET relies on [Phosphor](https://github.com/gmu-swe/phosphor) to perform dynamic taint tracking of all of the application and library code in an application, and relies on JUnit tests to drive program execution. Currently, RIVULET is only compatible with applications running in a Java 8 JVM with JUnit tests that are executed by Apache Maven. If you are interested only in using RIVULET with your existing project, you can skip directly to "Using RIVULET with Existing Test Suites" and follow the instructions for "Installing for an individual project."
 
-####To install RIVULET:
+#### To install RIVULET:
 
 1. Make sure that you have some version of OpenJDK 8 installed. Set the JAVA_HOME environmental variable to this path. On mac, e.g.: `export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_192-openjdk/Contents/Home/`
 2. Clone this repository
@@ -15,7 +15,7 @@ Optionally, run the integration tests, which include all of the benchmark worklo
 
 * In the integration-test directory, run the tests: `mvn test`. The first time you do this, it will take some time to instrument the JRE with Phosphor (this is cached in `~/.phosphor-jvm/`). Alternatively, you can run just the benchmarks (OWASP, Juliet, WAVSEP DAST, and Securibench-Micro) using `mvn -Pbenchmarks test`. One of the benchmarks in the test suite requires a MySQL server to be running, and it will automatically download, configure, start and stop that server (it will install it to `target/mysql-dist`).
 
-####Notes:
+#### Notes:
 
 * The plugin will instrument your JVM the first go-round, and store that instrumented jvm in `~/.phosphor-jvm` - if you need to change the sources/sinks etc, you will need to regenerate it (by deleting that directory). If you get `java.lang.RuntimeException: Method code too large!` during the instrumentation, it is probably OK to ignore them for now. Similarly, the plugin will cache the instrumented code for projects that you run, generally in the `target/cached-phosphor` directory of that project - a `mvn clean` will blow it away.
 

@@ -18,7 +18,7 @@
         <tests.juliet>io/rivulet/maven/test/juliet/*Test</tests.juliet>
         <tests.owasp>io/rivulet/maven/test/owasp/*Test</tests.owasp>
         <tests.securibench>io/rivulet/maven/test/securibench/*Test</tests.securibench>
-        <tomcat.version>9.0.19</tomcat.version>
+        <tomcat.version>9.0.30</tomcat.version>
         <maven.surefire.version>2.20.1</maven.surefire.version>
         <maven.dependency.plugin.version>3.1.1</maven.dependency.plugin.version>
         <build.helper.plugin.version>3.0.0</build.helper.plugin.version>

@@ -1,6 +1,8 @@
 # Revealing Injection VUlnerabilities by Leveraging Existing Tests (RIVULET)
 RIVULET is a system for detecting code injection vulnerabilities in Java web applications by combining existing JUnit tests with dynamic taint tracking and input generation. This repository contains the source code for RIVULET. For more information about how RIVULET works, please refer to our [ICSE 2020 paper](https://www.rivulet.io/rivulet.pdf).
 
+[![Build Status](https://travis-ci.com/gmu-swe/rivulet.svg?branch=master)](https://travis-ci.com/gmu-swe/rivulet)
+
 ## Installation and Running Benchmarks
 RIVULET relies on [Phosphor](https://github.com/gmu-swe/phosphor) to perform dynamic taint tracking of all of the application and library code in an application, and relies on JUnit tests to drive program execution. Currently, RIVULET is only compatible with applications running in a Java 8 JVM with JUnit tests that are executed by Apache Maven. If you are interested only in using RIVULET with your existing project, you can skip directly to "Using RIVULET with Existing Test Suites" and follow the instructions for "Installing for an individual project."
 
@@ -14,6 +16,8 @@ RIVULET relies on [Phosphor](https://github.com/gmu-swe/phosphor) to perform dyn
 Optionally, run the integration tests, which include all of the benchmark workloads used in our ICSE 2020 paper (although they do *not* run the case study workloads on iTrust, Struts and Jenkins). 
 
 * In the integration-test directory, run the tests: `mvn test`. The first time you do this, it will take some time to instrument the JRE with Phosphor (this is cached in `~/.phosphor-jvm/`). Alternatively, you can run just the benchmarks (OWASP, Juliet, WAVSEP DAST, and Securibench-Micro) using `mvn -Pbenchmarks test`. One of the benchmarks in the test suite requires a MySQL server to be running, and it will automatically download, configure, start and stop that server (it will install it to `target/mysql-dist`).
+
+RIVULET builds regularly on [TravisCI](https://travis-ci.com/gmu-swe/rivulet), and automatically runs this entire integration test suite (including all of the benchmarks used in our ICSE 2020 paper, but not including the Jenkins, iTrust or Struts experiments).
 
 #### Notes:
 
@@ -40,7 +44,7 @@ Add the following to the project's pom.xml file:
 			<extension>
 				<groupId>io.rivulet</groupId>
 				<artifactId>rivulet-maven-extension</artifactId>
-				<version>1.0</version>
+				<version>2.0.0-SNAPSHOT</version>
 			</extension>
 		</extensions>
 ...

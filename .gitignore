@@ -1,0 +1,56 @@
+.settings
+.vscode
+changes.txt
+lastClass.txt
+.idea
+
+# Ignore iml and vim swp files
+**/*.iml*
+**/*.swp
+
+# Ignore compiled class files
+**/target/*
+
+#Ignore velocty log files
+**/velocity.log
+
+!**/.gitignore
+
+# Ignore phosphor and tomcat generated files for integration-test
+integration-test/debug-preinst/*
+integration-test/debug/*
+integration-test/debug-source-sink/*
+integration-test/tomcat/*
+
+# Ignore dynamically generated content in experiment
+experiments/WebGoat.war
+experiments/debug/*
+experiments/disabled-apps/*
+experiments/tmp/*
+experiments/webgoat-inst/*
+experiments/apache-tomcat-8.0.47-inst/*
+experiments/debug-preinst/*
+experiments/debug-source-sink/*
+
+# Ignore all non-war files in webapps
+experiments/
+experiments/apache-tomcat-8.0.47/webapps/*
+!experiments/apache-tomcat-8.0.47/webapps/*.war
+!experiments/apache-tomcat-8.0.47/webapps/docs
+!experiments/apache-tomcat-8.0.47/webapps/examples
+!experiments/apache-tomcat-8.0.47/webapps/host-manager
+!experiments/apache-tomcat-8.0.47/webapps/manager
+!experiments/apache-tomcat-8.0.47/webapps/ROOT
+
+# Ignore downloaded apache maven phosphor
+/apache-maven-phosphor/
+
+# Ignore dynamically generated dependency-reduced-pom.xml
+**/dependency-reduced-pom.xml
+/integration-test/testfiles/*
+/cached-phosphor/
+/webapps/struts2-rest-showcase/
+
+/tomcat/work/
+/tomcat/catalina.out
+/tomcat/catalina.out.lck

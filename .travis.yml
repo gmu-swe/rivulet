@@ -1,0 +1,10 @@
+dist: trusty
+language: java
+sudo: false
+jdk: openjdk8
+install: mvn install -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+script: cd integration-test && bash run.sh -q
+env:
+  matrix:
+    - PROFILE=benchmarks
+    - PROFILE=non-benchmarks

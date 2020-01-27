@@ -21,9 +21,9 @@ RIVULET builds regularly on [TravisCI](https://travis-ci.com/gmu-swe/rivulet), a
 
 #### Notes:
 
-* The plugin will instrument your JVM the first go-round, and store that instrumented jvm in `~/.phosphor-jvm` - if you need to change the sources/sinks etc, you will need to regenerate it (by deleting that directory). If you get `java.lang.RuntimeException: Method code too large!` during the instrumentation, it is probably OK to ignore them for now. Similarly, the plugin will cache the instrumented code for projects that you run, generally in the `target/cached-phosphor` directory of that project - a `mvn clean` will blow it away.
+* The plugin will instrument your JVM the first go-round, and store that instrumented JVM in `~/.phosphor-jvm`. If you get `java.lang.RuntimeException: Method code too large!` during the instrumentation, it is probably OK to ignore them for now. Similarly, the plugin will cache the instrumented code for projects that you run, generally in the `target/cached-phosphor` directory of that project - a `mvn clean` will blow it away.
 
-* To play around with it: go into the `integration-test` project and inspect the tests. You will see that when the tests run, they print a "VIOLATION" when a source-sink flow is detected. The tests are then rerun. During reruns, you will see "CRITICAL VIOLATION" when a source-sink flow is verified. If you would like to write and run your own test, the easiest way to do so is to add your test method to an existing test and continue to use the `mvn test` command, perhaps running only the test that you changed, e.g. `mvn -Dtest=DeepSourceTest`. The default sources and sinks for integration tests can be found in `maven-extension/src/main/resources/config-files/integration-test/`; additional sources/sinks can be specified as annotations on a test class or test method.
+* To play around with RIVULET: go into the `integration-test` project and inspect the tests. You will see that when the tests run, they print a "VIOLATION" when a source-sink flow is detected. The tests are then rerun. During reruns, you will see "CRITICAL VIOLATION" when a source-sink flow is verified. If you would like to write and run your own test, the easiest way to do so is to add your test method to an existing test and continue to use the `mvn test` command, perhaps running only the test that you changed, e.g. `mvn -Dtest=DeepSourceTest`. The default sources and sinks for integration tests can be found in `maven-extension/src/main/resources/config-files/integration-test/`; additional sources/sinks can be specified as annotations on a test class or test method.
 
 ## Using RIVULET with Existing Test Suites
 Once RIVULET is installed, it is relatively straightforward to use it to find vulnerabilities in an existing application, provided that that application has an automated test suite that is executed with `mvn test` or `mvn verify`.
@@ -51,13 +51,12 @@ Add the following to the project's pom.xml file:
 ```
 
 ### Installing site-wide
-Transforming POM files can be annoying. When you install RIVULET, the install script will download an extra copy of maven and install the RIVULET maven extension into that copy of maven (simply copying the extension into the `lib/ext` folder). After you have run `mvn install`, you can find that copy of maven in `apache-maven-phosphor/bin/mvn`. The `runPom.sh` script will ensure that the correct version of maven is selected, and will also apply some default configuration options.
+Transforming POM files can be annoying. When you install RIVULET, the install script will download an extra copy of maven and install the RIVULET maven extension into that copy of maven (simply copying the extension into the `lib/ext` folder). After you have run `mvn install`, you can find that copy of maven in `apache-maven-phosphor/bin/mvn`. The `runPom.sh` script will ensure that the correct version of maven is selected and will also apply some default configuration options.
 
 ### Running tests with RIVULET
 Once RIVULET is installed, it will modify your project's build configuration on-the-fly to perform its vulnerability analysis. RIVULET is designed to work out-of-the-box (with no configuration change) if your web server runs in the same JVM as your tests (e.g. if you use a JUnit rule to start a jetty or tomcat server before running tests) - if this is the case, simply running `mvn install` (or `runPom.sh install pom.xml` for the site-wide install) will run everything.
 
 If your project is NOT configured to start a testing web server in the same process as the tests, then you can still use RIVULET: you'll just need to connect RIVULET to both ends of the system (the web server JVM and the test running JVM). Take a look at the scripts that we've provided in our iTrust and Struts forks (see below) for examples of doing so. 
-
 
 ## Reproducing our ICSE 2020 experiments
 Our [ICSE 2020 paper](https://www.rivulet.io/rivulet.pdf) describing RIVULET includes the following experiments, which you can easily reproduce using our artifact:
@@ -156,6 +155,6 @@ This project makes use of the following libraries:
 * [ASM](http://asm.ow2.org/license.html), (c) 2000-2011 INRIA, France Telecom, [license](http://asm.ow2.org/license.html)
 * [jsoup](https://jsoup.org), (c) Jonathan Hedley, [license](https://jsoup.org/license)
 
-Phosphor's performance tuning is made possible by [JProfiler, the java profiler](https://www.ej-technologies.com/products/jprofiler/overview.html).
+Phosphor's performance tuning is made possible by [JProfiler, the Java profiler](https://www.ej-technologies.com/products/jprofiler/overview.html).
 
 Jonathan Bell and Katherine Hough are funded in part by NSF CCF-1763822, NSF CNS-1844880, and the NSA under contract number H98230-18-D-008.
